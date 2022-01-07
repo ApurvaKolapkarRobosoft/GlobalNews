@@ -1,4 +1,5 @@
 package com.learn.globalnews.ui.viewmodel
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.learn.globalnews.data.repository.MainRepository
@@ -11,13 +12,15 @@ But ViewModelProviders can only instantiate ViewModels with no arg constructor.
 So if I have a ViewModel with multiple arguments, then I need to use a Factory that I can pass
 to ViewModelProviders to use when an instance of MyViewModel is required.
  */
-class MyViewModelFactory constructor(private val repository: MainRepository): ViewModelProvider.Factory {
+class NewsListViewModelFactory constructor(private val repository: MainRepository) :
+    ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            MainViewModel(this.repository) as T
+        return if (modelClass.isAssignableFrom(NewsListViewModel::class.java)) {
+            NewsListViewModel(this.repository) as T
         } else {
             throw IllegalArgumentException("ViewModel Not Found")
         }
     }
+
 }

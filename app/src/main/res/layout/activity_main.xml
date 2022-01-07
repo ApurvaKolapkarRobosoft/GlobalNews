@@ -7,85 +7,21 @@
     tools:context=".ui.view.MainActivity"
     tools:ignore="Overdraw">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitle"
+    <fragment
+        android:id="@+id/topNewsFragmentView"
+        android:name="com.learn.globalnews.ui.view.TopNewsFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/top_news"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/listOfNewsFragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitlePopularNews"
+    <fragment
+        android:id="@+id/listOfNewsFragment"
+        android:name="com.learn.globalnews.ui.view.NewsListFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/popular_news"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TopNewLayout" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/TopNewLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textTitle">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/topNewsImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/topNewsname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/topNewsImage"
-            tools:text="@tools:sample/full_names" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/topNewsdescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/topNewsname"
-            tools:text="@tools:sample/full_names" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/graybackground"
-            android:padding="4dp"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/topNewsdescription" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/newsListRecyclerViw"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textTitlePopularNews"
-        tools:itemCount="5"
-        tools:listitem="@layout/adapter_news" />
+        app:layout_constraintTop_toBottomOf="@id/topNewsFragmentView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

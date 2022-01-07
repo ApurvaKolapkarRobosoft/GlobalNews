@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.learn.globalnews.data.model.NewsModel
 import com.learn.globalnews.databinding.AdapterNewsBinding
 
-class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
+class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
 
     private var news = mutableListOf<NewsModel>()
 

@@ -9,17 +9,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class NewsListViewModel constructor(private val repository: MainRepository) : ViewModel() {
-    val newsList = MutableLiveData<List<NewsModel>>()
+class TopNewsFragmentViewModel constructor(private val repository: MainRepository) : ViewModel() {
     val errorMessage = MutableLiveData<String>()
+    val news = MutableLiveData<NewsModel>()
 
-    fun getAllNewsWithSources() {
-        val response = repository.executePreNewsApi(0)
+    fun getAllPopularNewsWithSources() {
+        val response = repository.executePopularNewsApi()
         response?.enqueue(object : Callback<PreNewsModel> {
             override fun onResponse(call: Call<PreNewsModel>, response: Response<PreNewsModel>) {
                 val resBody = response.body()
-                newsList.postValue(resBody?.articles)
-                print(resBody)
+                news.postValue(resBody?.articles?.get(0))
             }
 
             override fun onFailure(call: Call<PreNewsModel>, t: Throwable) {
@@ -27,5 +26,4 @@ class NewsListViewModel constructor(private val repository: MainRepository) : Vi
             }
         })
     }
-
 }

@@ -1,0 +1,5 @@
+Application contains use of MVVM architecture along with retrofit to parse the news data
+
+References :
+1. https://howtodoandroid.com/mvvm-retrofit-recyclerview-kotlin/
+2. https://developer.android.com/codelabs/android-databinding#6

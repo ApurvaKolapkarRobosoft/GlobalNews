@@ -1,4 +1,5 @@
 Application contains use of MVVM architecture along with retrofit to parse the news data
+Application for basic news UI with use of MVVM and retofit as of now. Will be adding Koin for dependency injection and Kotest framework for writing unit test
 
 References :
 1. https://howtodoandroid.com/mvvm-retrofit-recyclerview-kotlin/

@@ -1,5 +1,6 @@
-package com.learn.globalnews
+package com.learn.globalnews.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,8 +10,9 @@ import com.learn.globalnews.databinding.AdapterNewsBinding
 
 class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
 
-    var news = mutableListOf<NewsModel>()
+    private var news = mutableListOf<NewsModel>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setNewsList(news: List<NewsModel>) {
         this.news = news.toMutableList()
         notifyDataSetChanged()
@@ -25,6 +27,8 @@ class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val news = news[position]
         holder.binding.name.text = news.title
+        holder.binding.descriptionText.text = news.description
+        holder.binding.source.text = news.source.name
         Glide.with(holder.itemView.context).load(news.urlToImage).into(holder.binding.imageview)
     }
 
@@ -34,6 +38,3 @@ class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
 }
 
 class MainViewHolder(val binding: AdapterNewsBinding) : RecyclerView.ViewHolder(binding.root)
-{
-
-}

@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white"
     tools:context=".ui.view.MainActivity"
     tools:ignore="Overdraw">
@@ -15,20 +15,9 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"
         android:textStyle="bold"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitlePopularNews"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/popular_news"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TopNewLayout" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/TopNewLayout"
@@ -77,15 +66,5 @@
             app:layout_constraintTop_toBottomOf="@id/topNewsdescription" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/newsListRecyclerViw"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textTitlePopularNews"
-        tools:itemCount="5"
-        tools:listitem="@layout/adapter_news" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

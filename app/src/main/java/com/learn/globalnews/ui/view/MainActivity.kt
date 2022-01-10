@@ -10,13 +10,13 @@ import com.learn.globalnews.data.repository.MainRepository
 import com.learn.globalnews.ui.viewmodel.MyViewModelFactory
 import com.learn.globalnews.data.api.RetrofitService
 import com.learn.globalnews.databinding.ActivityMainBinding
+import com.learn.globalnews.ui.adapter.MainAdapter
 import com.learn.globalnews.ui.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val TAG = "MainActivity"
     private lateinit var binding: ActivityMainBinding
-    lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: MainViewModel
     private val retrofitService = RetrofitService.getInstance()
     private val adapter = MainAdapter()
 
@@ -26,16 +26,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this, MyViewModelFactory(MainRepository(retrofitService)))
-            .get(MainViewModel::class.java)
-        binding.recyclerview.adapter = adapter
+        viewModel = ViewModelProvider(this, MyViewModelFactory(MainRepository(retrofitService)))[MainViewModel::class.java]
+        binding.newsListRecyclerViw.adapter = adapter
         viewModel.newsList.observe(this, Observer {
-            Log.d(TAG, "onCreate: $it")
             adapter.setNewsList(it)
         })
         viewModel.errorMessage.observe(this, Observer {
         })
-//        viewModel.getAllMovies()
         viewModel.getAllNewsWithSources()
+        viewModel.getAllPopularNewsWithSources()
     }
 }

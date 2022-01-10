@@ -1,7 +1,6 @@
 package com.learn.globalnews.ui.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.learn.globalnews.data.model.MoviesModel
 import com.learn.globalnews.data.repository.MainRepository
 import com.learn.globalnews.data.model.NewsModel
 import com.learn.globalnews.data.model.PreNewsModel
@@ -24,29 +23,30 @@ LiveData will also automatically remove the observer when its host receives onDe
 class MainViewModel constructor(private val repository: MainRepository)  : ViewModel() {
 
     val newsList = MutableLiveData<List<NewsModel>>()
-    val moviesList = MutableLiveData<List<MoviesModel>>()
     val errorMessage = MutableLiveData<String>()
-
-    fun getAllMovies() {
-        val response = repository.getAllMovies()
-        response.enqueue(object : Callback<List<MoviesModel>> {
-            override fun onResponse(call: Call<List<MoviesModel>>, response: Response<List<MoviesModel>>) {
-                moviesList.postValue(response.body())
-            }
-
-            override fun onFailure(call: Call<List<MoviesModel>>, t: Throwable) {
-                errorMessage.postValue(t.message)
-            }
-        })
-    }
 
     fun getAllNewsWithSources() {
         val response = repository.executePreNewsApi(0)
         response?.enqueue(object :Callback<PreNewsModel>
         {
             override fun onResponse(call: Call<PreNewsModel>, response: Response<PreNewsModel>) {
-                var resBody=response.body()
+                val resBody=response.body()
                 newsList.postValue(resBody?.articles)
+                print(resBody)
+            }
+
+            override fun onFailure(call: Call<PreNewsModel>, t: Throwable) {
+                errorMessage.postValue(t.message)
+            }
+        })
+    }
+
+    fun getAllPopularNewsWithSources() {
+        val response = repository.executePopularNewsApi()
+        response?.enqueue(object :Callback<PreNewsModel>
+        {
+            override fun onResponse(call: Call<PreNewsModel>, response: Response<PreNewsModel>) {
+                val resBody=response.body()
                 print(resBody)
             }
 

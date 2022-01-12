@@ -4,3 +4,11 @@ Application for basic news UI with use of MVVM and retofit as of now. Will be ad
 References :
 1. https://howtodoandroid.com/mvvm-retrofit-recyclerview-kotlin/
 2. https://developer.android.com/codelabs/android-databinding#6
+
+Koin Dependency Injection reference link for learning and implementation :
+1. https://kotest.io/docs/quickstart
+2. https://insert-koin.io/docs/quickstart/android-viewmodel
+3. https://insert-koin.io/docs/reference/koin-android/viewmodel/
+4. https://medium.com/swlh/mvvm-on-android-with-the-architecture-components-koin-f53c3c200363
+5. https://medium.com/swlh/dependency-injection-with-koin-6b6364dc8dba
+6. https://en.proft.me/2016/12/28/getting-started-dependency-injection-android-using/

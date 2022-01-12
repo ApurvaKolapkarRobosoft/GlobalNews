@@ -1,7 +1,7 @@
-package com.learn.globalnews.di
+package com.learn.globalnews
 
 import android.app.Application
-import com.learn.globalnews.BuildConfig
+import com.learn.globalnews.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -13,7 +13,11 @@ class GlobalNewsApplication : Application() {
         startKoin{
             androidLogger(if (BuildConfig.DEBUG) Level.ERROR else Level.NONE)
             androidContext(this@GlobalNewsApplication)
-            modules(listOf(newsListViewModelModule, topNewsFragmentViewModelModule,repositoryModule, apiModule,retrofitModule))
+            modules(listOf(
+                newsListViewModelModule, topNewsFragmentViewModelModule,
+                repositoryModule, apiModule,
+                retrofitModule
+            ))
         }
     }
 }

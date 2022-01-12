@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.learn.globalnews.data.model.NewsModel
 import com.learn.globalnews.databinding.AdapterNewsBinding
+import com.learn.globalnews.ui.interfaces.ListItemClick
 
-class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
+
+class MainAdapter constructor(val itemClick: ListItemClick) : RecyclerView.Adapter<MainViewHolder>() {
 
     private var news = mutableListOf<NewsModel>()
 
@@ -30,11 +32,15 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
         holder.binding.descriptionText.text = news.description
         holder.binding.source.text = news.source.name
         Glide.with(holder.itemView.context).load(news.urlToImage).into(holder.binding.imageview)
+        holder.itemView.setOnClickListener {
+            itemClick.onItemClicked(newsDataModel = news)
+        }
     }
 
     override fun getItemCount(): Int {
         return news.size
     }
+
 }
 
 class MainViewHolder(val binding: AdapterNewsBinding) : RecyclerView.ViewHolder(binding.root)

@@ -9,9 +9,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class NewsListViewModel constructor(private val repository: MainRepository) : ViewModel() {
+
+class NewsListViewModel(private val repository: MainRepository, get: Any, get1: Any) : ViewModel() {
     val newsList = MutableLiveData<List<NewsModel>>()
     val errorMessage = MutableLiveData<String>()
+    private val detailsNewsUrl = MutableLiveData<NewsModel>()
 
     fun getAllNewsWithSources() {
         val response = repository.executePreNewsApi(0)
@@ -26,6 +28,13 @@ class NewsListViewModel constructor(private val repository: MainRepository) : Vi
                 errorMessage.postValue(t.message)
             }
         })
+    }
+    fun setDetailsUrl(newsModel: NewsModel) {
+        detailsNewsUrl.value = newsModel
+    }
+
+    fun getDetailsUrl(): MutableLiveData<NewsModel> {
+        return detailsNewsUrl
     }
 
 }

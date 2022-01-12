@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    tools:context=".ui.view.MainActivity"
+    tools:context=".ui.view.TopNewsFragment"
     tools:ignore="Overdraw">
 
     <androidx.appcompat.widget.AppCompatTextView

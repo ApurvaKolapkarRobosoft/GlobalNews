@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val newsListViewModelModule = module {
     viewModel {
-        NewsListViewModel(get())
+        NewsListViewModel(get(), get(), get())
     }
 }
 
@@ -21,6 +21,7 @@ val topNewsFragmentViewModelModule = module {
         TopNewsFragmentViewModel(get())
     }
 }
+
 
 val repositoryModule = module {
     single {
